@@ -76,8 +76,8 @@ public class DataService extends Service {
         List<Message> messages = new ArrayList<Message>();
 
         public ConversationBinder() {
-            messages.add(new Message());
-            messages.add(new Message());
+            messages.add(new Message("Test"));
+            messages.add(new Message("Message"));
         }
 
         public List<Message> getMessages(Conversation conversation) {
