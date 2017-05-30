@@ -9,30 +9,42 @@
 
     <ListView
         android:id="@+id/list_messages"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll">
-
+        android:transcriptMode="alwaysScroll"
+        android:dividerHeight="3dp"
+        android:divider="@android:color/transparent"
+        android:choiceMode="none"
+        android:focusableInTouchMode="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp">
     </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
         <EditText
             android:id="@+id/edit_message"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLines="3"/>
 
         <Button
             android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Send" />
+            android:text="Send"
+            android:enabled="false"/>
 
     </LinearLayout>
 

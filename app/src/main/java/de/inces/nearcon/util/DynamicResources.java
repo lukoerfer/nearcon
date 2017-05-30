@@ -11,7 +11,7 @@ public class DynamicResources {
     }
 
     public int findDrawableByName(String name) {
-        name = "@drawable/" + name;
+        name = "@drawable/icon_" + name;
         return this.context.getResources().getIdentifier(name, null, context.getPackageName());
     }
 

@@ -2,14 +2,21 @@ package de.inces.nearcon.events;
 
 public class EventIcon {
 
+    private int CategoryId;
     private String Id;
-    private EventCategory Category;
+
+    public EventIcon(int categoryId, String id) {
+        this.CategoryId = categoryId;
+        this.Id = id;
+    }
+
+    public int getCategoryId() {
+        return this.CategoryId;
+    }
 
     public String getId() {
         return this.Id;
     }
 
-    public EventCategory getCategory() {
-        return this.Category;
-    }
+
 }

@@ -14,7 +14,7 @@
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_margin="5dp"
-        android:text="My score" />
+        android:text="Score" />
 
     <TextView
         android:layout_width="match_parent"
@@ -30,14 +30,26 @@
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_margin="5dp"
-        android:text="My active events" />
+        android:text="Active events" />
 
     <ListView
         android:id="@+id/list_events"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp" />
+    
+    <TextView
+        android:id="@+id/txt_no_events"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="No active events found!" />
 
     <TextView
         android:layout_width="match_parent"
@@ -45,14 +57,26 @@
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_margin="5dp"
-        android:text="My conversations" />
+        android:text="Conversations" />
 
     <ListView
         android:id="@+id/list_conversations"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp" />
+
+    <TextView
+        android:id="@+id/txt_no_conversations"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="No active conversations found!" />
 
 
 </LinearLayout>

@@ -96,7 +96,7 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
     
     public void updateMap(){
         //addEventMarker(eve);
-        }
+    }
 
     private BitmapDescriptor bitmapFromDrawable(Drawable drawable) {
         Canvas canvas = new Canvas();

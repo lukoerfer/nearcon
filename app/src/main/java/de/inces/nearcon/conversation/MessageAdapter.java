@@ -1,10 +1,12 @@
 package de.inces.nearcon.conversation;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import de.inces.nearcon.conversations.Message;
@@ -24,6 +26,18 @@ public class MessageAdapter extends ArrayAdapter<Message> {
         }
         TextView txtContent = (TextView) view.findViewById(R.id.txt_content);
         txtContent.setText(message.getContent());
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) txtContent.getLayoutParams();
+        //TODO User = ich oder wer anders
+        if(false) {
+            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.leftMargin = 80;
+            txtContent.setBackgroundResource(R.drawable.item_message_background_sent);
+        }else {
+            params.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.rightMargin = 80;
+            txtContent.setBackgroundResource(R.drawable.item_message_background_received);
+        }
+        txtContent.setLayoutParams(params);
         return view;
     }
 }
