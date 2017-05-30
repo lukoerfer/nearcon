@@ -1,4 +1,4 @@
-package de.inces.nearby.events;
+package de.inces.nearcon.events;
 
 /**
  * Created by Koerfer on 30.05.2017.

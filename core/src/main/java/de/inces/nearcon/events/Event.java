@@ -1,7 +1,7 @@
-package de.inces.nearby.events;
+package de.inces.nearcon.events;
 
 import java.util.Calendar;
-import de.inces.nearby.users.User;
+import de.inces.nearcon.users.User;
 
 public class Event {
 
