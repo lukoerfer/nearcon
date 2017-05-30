@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Nearcon</string>
+
+    <!-- Entries for the categories-->
+    <string-array name="categories_array">
+        <item>Sport</item>
+        <item>Drink</item>
+        <item>Eat</item>
+    </string-array>
 </resources>
