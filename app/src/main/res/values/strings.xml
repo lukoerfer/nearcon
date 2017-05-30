@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Nearcon</string>
 
+    <string name="str_visibility_time">This Event is active for </string>
+
+    <string name="str_visibility_radius">This Event is shown to users within a radius of </string>
+
     <!-- Entries for the categories-->
-    <string-array name="categories_array">
+    <string-array name="array_categories">
         <item>Sport</item>
         <item>Drink</item>
         <item>Eat</item>
