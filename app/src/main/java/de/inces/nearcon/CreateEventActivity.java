@@ -3,11 +3,14 @@ package de.inces.nearcon;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,6 +21,8 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     protected Spinner spinnerCategory;
     protected EditText editDescription;
     protected Button btnSubmit;
+    protected RadioButton btnYourLoc;
+    protected RadioButton btnSelectedLoc;
 
     protected SeekBar seekVisibilityTime;
     protected SeekBar seekVisibilityRadius;
@@ -42,6 +47,9 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
         this.initSubmitButton();
         this.initVisibilityTime();
         this.initVisibilityRadius();
+        this.initLocationButtons();
+
+        this.initDefaultValues();
     }
 
 
@@ -86,8 +94,6 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     protected void initVisibilityTime(){
         this.seekVisibilityTime = (SeekBar) findViewById(R.id.seek_visibilityTime);
         this.txtVisibilityTime = (TextView) findViewById(R.id.txt_visibilityTime);
-        this.txtVisibilityTime.setText(getString(R.string.str_visibility_time) + " 30 minutes.");
-        //TODO set default!!!!
         this.seekVisibilityTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -105,17 +111,30 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
                 // TODO Insert Text and put time in variable
                 String visibilityTimeText = getString(R.string.str_visibility_time);
                 switch (progress) {
-                    case 0: visibilityTimeText = visibilityTimeText + " 30 minutes.";
+                    case 0: visibilityTimeText = visibilityTimeText + " 15 minutes.";
                             break;
-                    case 1: visibilityTimeText = visibilityTimeText + " 1 hour.";
+                    case 1: visibilityTimeText = visibilityTimeText + " 30 minutes..";
                             break;
-                    case 2: visibilityTimeText = visibilityTimeText + " 2 hours.";
+                    case 2: visibilityTimeText = visibilityTimeText + " 45 minutes.";
                             break;
-                    case 3: visibilityTimeText = visibilityTimeText + " 3 hours.";
+                    case 3: visibilityTimeText = visibilityTimeText + " 1 hour.";
                         break;
-                    case 4: visibilityTimeText = visibilityTimeText + " 5 hours.";
+                    case 4: visibilityTimeText = visibilityTimeText + " 1.5 hours.";
                         break;
-
+                    case 5: visibilityTimeText = visibilityTimeText + " 2 hours.";
+                        break;
+                    case 6: visibilityTimeText = visibilityTimeText + " 2.5 hours.";
+                        break;
+                    case 7: visibilityTimeText = visibilityTimeText + " 3 hours.";
+                        break;
+                    case 8: visibilityTimeText = visibilityTimeText + " 4 hours.";
+                        break;
+                    case 9: visibilityTimeText = visibilityTimeText + " 5 hours.";
+                        break;
+                    case 10: visibilityTimeText = visibilityTimeText + " 7 hours.";
+                        break;
+                    case 11: visibilityTimeText = visibilityTimeText + " 10 hours.";
+                        break;
                     default: break;
                 }
 
@@ -128,8 +147,6 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     protected void initVisibilityRadius(){
         this.seekVisibilityRadius = (SeekBar) findViewById(R.id.seek_visibilityRadius);
         this.txtVisibilityRadius = (TextView) findViewById(R.id.txt_visibilityRadius);
-        this.txtVisibilityRadius.setText(getString(R.string.str_visibility_radius) + " 0.5 km.");
-        //TODO set default!!!!
         this.seekVisibilityRadius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -151,9 +168,15 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
                         break;
                     case 1: visibilityRadiusText = visibilityRadiusText + " 1 km.";
                         break;
-                    case 2: visibilityRadiusText = visibilityRadiusText + " 2 km.";
+                    case 2: visibilityRadiusText = visibilityRadiusText + " 1.5 km.";
                         break;
-                    case 3: visibilityRadiusText = visibilityRadiusText + " 5 km.";
+                    case 3: visibilityRadiusText = visibilityRadiusText + " 2 km.";
+                        break;
+                    case 4: visibilityRadiusText = visibilityRadiusText + " 3 km.";
+                        break;
+                    case 5: visibilityRadiusText = visibilityRadiusText + " 4 km.";
+                        break;
+                    case 6: visibilityRadiusText = visibilityRadiusText + " 5 km.";
                         break;
 
                     default: break;
@@ -166,6 +189,39 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
         });
 
         this.seekVisibilityRadius.setProgress(0);
+    }
+
+
+    private void initLocationButtons(){
+
+        this.btnYourLoc = (RadioButton) findViewById(R.id.btn_yourLocation);
+
+        //What to do, when the Button is clicked!!
+        this.btnYourLoc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                    btnSelectedLoc.setChecked(false);
+                } else {
+                }
+            }
+        });
+
+        this.btnSelectedLoc = (RadioButton) findViewById(R.id.btn_selectedLocation);
+
+        //What to do, when the Button is clicked!!
+        this.btnSelectedLoc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                    btnYourLoc.setChecked(false);
+                } else {
+                }
+            }
+        });
+
     }
 
 
@@ -195,5 +251,20 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
             }
         });
     }
+
+    protected void initDefaultValues(){
+        //Set Text for Visibility Radius
+        //TODO set default value for it
+        this.txtVisibilityRadius.setText(getString(R.string.str_visibility_radius) + " 0.5 km.");
+        //Set Text for Visibility Time
+        //TODO set default value for it
+        this.txtVisibilityTime.setText(getString(R.string.str_visibility_time) + " 15 minutes.");
+
+        //set default location
+        //TODO set default value for it
+        this.btnSelectedLoc.setChecked(true);
+
+    }
+
 
 }
