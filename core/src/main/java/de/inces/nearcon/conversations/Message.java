@@ -12,10 +12,6 @@ public class Message {
 
     private String Content;
 
-    public Message(String content) {
-        this.Content = content;
-    }
-
     public Calendar getTimestamp() {
         return this.Timestamp;
     }
