@@ -1,7 +1,20 @@
 <resources>
     <string name="app_name">Nearcon</string>
+
     <string name="title_activity_event_map">Event Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="str_visibility_time">Event is active for</string>
+
+    <string name="str_visibility_radius">Event is shown to users within a radius of</string>
+
+    <!-- Entries for the categories-->
+    <string-array name="array_categories">
+        <item>Sport</item>
+        <item>Drink</item>
+        <item>Eat</item>
+    </string-array>
+
 </resources>
