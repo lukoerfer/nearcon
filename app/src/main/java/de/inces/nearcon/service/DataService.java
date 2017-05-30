@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +31,21 @@ public class DataService extends Service {
     public class MapBinder extends Binder {
 
         public List<Event> searchEvents() {
-            return null;
+            List<Event> events = new ArrayList<Event>();
+            return events;
+        }
+
+        public Conversation startConversation(Event event) {
+            return new Conversation();
         }
 
     }
 
     public class CreateEventBinder extends Binder {
+
+        public User getUser() {
+            return DataService.this.currentUser;
+        }
 
         public void createEvent(Event event) {
 
@@ -63,8 +73,19 @@ public class DataService extends Service {
 
     public class ConversationBinder extends Binder {
 
+        List<Message> messages = new ArrayList<Message>();
+
+        public ConversationBinder() {
+            messages.add(new Message());
+            messages.add(new Message());
+        }
+
         public List<Message> getMessages(Conversation conversation) {
-            return null;
+            return messages;
+        }
+
+        public void sendMessage(Message message) {
+            this.messages.add(message);
         }
 
     }

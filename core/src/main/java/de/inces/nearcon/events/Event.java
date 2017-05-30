@@ -9,6 +9,7 @@ public class Event {
     private User Creator;
     private EventCategory Category;
     private EventIcon Icon;
+    private String Description;
     private Calendar ExpireTime;
     private EventLocation Location;
     private int Exclusivity;
@@ -28,6 +29,10 @@ public class Event {
 
     public EventIcon getIcon() {
         return this.Icon;
+    }
+
+    public String getDescription() {
+        return this.Description;
     }
 
     public Calendar getExpireTime() {
