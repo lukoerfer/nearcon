@@ -15,14 +15,13 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_newEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_add_white_24dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/ic_add_white_24dp" >
             app:elevation="4dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="right|top" />
 
     </fragment>
-
 </LinearLayout>

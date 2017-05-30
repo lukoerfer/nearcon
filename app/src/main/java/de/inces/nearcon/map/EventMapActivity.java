@@ -52,25 +52,5 @@ public class EventMapActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showPopup(View anchorView) {
 
-        View popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
-
-        PopupWindow popupWindow = new PopupWindow(popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);;
-
-        // If the PopupWindow should be focusable
-        popupWindow.setFocusable(true);
-
-        // If you need the PopupWindow to dismiss when when touched outside
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
-
-        int location[] = new int[2];
-
-        // Get the View's(the one that was clicked in the Fragment) location
-        anchorView.getLocationOnScreen(location);
-
-        // Using location, the PopupWindow will be displayed right under anchorView
-        popupWindow.showAsDropDown(anchorView);
-    }
 }
