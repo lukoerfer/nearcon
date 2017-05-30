@@ -3,7 +3,6 @@ package de.inces.nearcon;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,9 +16,8 @@ import android.widget.Toast;
 public class CreateEventActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     protected Spinner spinnerCategory;
-    protected Spinner test_spinner;
-    protected EditText edit_description;
-    protected Button submit_button;
+    protected EditText editDescription;
+    protected Button btnSubmit;
 
     protected SeekBar seekVisibilityTime;
     protected SeekBar seekVisibilityRadius;
@@ -40,7 +38,6 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     protected void onResume(){
         super.onResume();
         this.initCategorySpinner();
-        this.initTestSpinner();
         this.initDescritionText();
         this.initSubmitButton();
         this.initVisibilityTime();
@@ -55,19 +52,12 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
         // Resources res = getResources();
         // String[] cat_array = res.getStringArray(R.array.array_categories);
         Spinner spin = (Spinner)parent;
-        Spinner spin2 = (Spinner)parent;
-        TextView t=(TextView)findViewById(R.id.textviewtest);
-        if(spin.getId() == R.id.category_spinner)
+        if(spin.getId() == R.id.spinner_category)
         {
             this.iCategoryID = pos;
             if(pos==0){
                 //TODO Do something with position 1 of the array (sports atm)
             }
-
-        }
-        if(spin2.getId() == R.id.test_spinner)
-        {
-
         }
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
@@ -78,7 +68,7 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     }
 
     protected void initCategorySpinner(){
-        this.spinnerCategory = (Spinner) findViewById(R.id.category_spinner);
+        this.spinnerCategory = (Spinner) findViewById(R.id.spinner_category);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.array_categories, android.R.layout.simple_spinner_item);
@@ -89,26 +79,14 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
         this.spinnerCategory.setOnItemSelectedListener(this);
     }
 
-    protected void initTestSpinner(){
-        this.test_spinner = (Spinner) findViewById(R.id.test_spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.array_categories, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        this.test_spinner.setAdapter(adapter);
-        this.test_spinner.setOnItemSelectedListener(this);
-    }
-
     protected void initDescritionText(){
-        this.edit_description = (EditText) findViewById(R.id.edit_description);
+        this.editDescription = (EditText) findViewById(R.id.edit_description);
     }
 
     protected void initVisibilityTime(){
         this.seekVisibilityTime = (SeekBar) findViewById(R.id.seek_visibilityTime);
         this.txtVisibilityTime = (TextView) findViewById(R.id.txt_visibilityTime);
-        this.txtVisibilityTime.setText(getString(R.string.str_visibility_time) + "30 minutes.");
+        this.txtVisibilityTime.setText(getString(R.string.str_visibility_time) + " 30 minutes.");
         //TODO set default!!!!
         this.seekVisibilityTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -127,15 +105,15 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
                 // TODO Insert Text and put time in variable
                 String visibilityTimeText = getString(R.string.str_visibility_time);
                 switch (progress) {
-                    case 0: visibilityTimeText = visibilityTimeText + "30 minutes.";
+                    case 0: visibilityTimeText = visibilityTimeText + " 30 minutes.";
                             break;
-                    case 1: visibilityTimeText = visibilityTimeText + "1 hour.";
+                    case 1: visibilityTimeText = visibilityTimeText + " 1 hour.";
                             break;
-                    case 2: visibilityTimeText = visibilityTimeText + "2 hours.";
+                    case 2: visibilityTimeText = visibilityTimeText + " 2 hours.";
                             break;
-                    case 3: visibilityTimeText = visibilityTimeText + "3 hours.";
+                    case 3: visibilityTimeText = visibilityTimeText + " 3 hours.";
                         break;
-                    case 4: visibilityTimeText = visibilityTimeText + "5 hours.";
+                    case 4: visibilityTimeText = visibilityTimeText + " 5 hours.";
                         break;
 
                     default: break;
@@ -150,7 +128,7 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     protected void initVisibilityRadius(){
         this.seekVisibilityRadius = (SeekBar) findViewById(R.id.seek_visibilityRadius);
         this.txtVisibilityRadius = (TextView) findViewById(R.id.txt_visibilityRadius);
-        this.txtVisibilityRadius.setText(getString(R.string.str_visibility_radius) + "0.5 km.");
+        this.txtVisibilityRadius.setText(getString(R.string.str_visibility_radius) + " 0.5 km.");
         //TODO set default!!!!
         this.seekVisibilityRadius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -169,13 +147,13 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
                 // TODO Insert Text and put radius in variable
                 String visibilityRadiusText = getString(R.string.str_visibility_radius);
                 switch (progress) {
-                    case 0: visibilityRadiusText = visibilityRadiusText + "0.5 km.";
+                    case 0: visibilityRadiusText = visibilityRadiusText + " 0.5 km.";
                         break;
-                    case 1: visibilityRadiusText = visibilityRadiusText + "1 km.";
+                    case 1: visibilityRadiusText = visibilityRadiusText + " 1 km.";
                         break;
-                    case 2: visibilityRadiusText = visibilityRadiusText + "2 km.";
+                    case 2: visibilityRadiusText = visibilityRadiusText + " 2 km.";
                         break;
-                    case 3: visibilityRadiusText = visibilityRadiusText + "5 km.";
+                    case 3: visibilityRadiusText = visibilityRadiusText + " 5 km.";
                         break;
 
                     default: break;
@@ -192,9 +170,9 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
 
 
     protected void initSubmitButton(){
-        this.submit_button = (Button) findViewById(R.id.btn_submit);
+        this.btnSubmit = (Button) findViewById(R.id.btn_submit);
 
-        this.submit_button.setOnClickListener(new View.OnClickListener() {
+        this.btnSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -202,7 +180,7 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
                 // Or show warning if you have to do something more
 
                 //first get descriptiontext
-                String descText = edit_description.getText().toString();
+                String descText = editDescription.getText().toString();
 
                 //TODO make an if condition for "no test added"
                 if (true){
