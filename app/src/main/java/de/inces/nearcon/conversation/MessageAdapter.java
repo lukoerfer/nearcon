@@ -30,9 +30,11 @@ public class MessageAdapter extends ArrayAdapter<Message> {
         //TODO User = ich oder wer anders
         if(false) {
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.leftMargin = 80;
             txtContent.setBackgroundResource(R.drawable.item_message_background_sent);
         }else {
             params.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.rightMargin = 80;
             txtContent.setBackgroundResource(R.drawable.item_message_background_received);
         }
         txtContent.setLayoutParams(params);
