@@ -3,6 +3,8 @@ package de.inces.nearcon.conversation;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +27,17 @@ public class ConversationActivity extends AppCompatActivity {
         this.initializeMessageAdapter();
 
         this.editMessage = (EditText) findViewById(R.id.edit_message);
+        this.editMessage.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btnSend.setEnabled(s.length() > 0);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
 
         this.initSendButton();
     }
@@ -46,10 +59,14 @@ public class ConversationActivity extends AppCompatActivity {
                 // Or show warning if you have to do something more
 
                 //first get descriptiontext
+
                 String message = editMessage.getText().toString();
-                //TODO make an if condition for "no test added"
-                Messages.add(new Message(message));
-                editMessage.setText("");
+                if(!message.isEmpty()) {
+                    //TODO make an if condition for "no test added"
+                    Messages.add(new Message(message));
+                    editMessage.setText("");
+                }
+
 
 
             }

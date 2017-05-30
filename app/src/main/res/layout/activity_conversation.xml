@@ -40,7 +40,8 @@
             android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Send" />
+            android:text="Send"
+            android:enabled="false"/>
 
     </LinearLayout>
 
