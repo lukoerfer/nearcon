@@ -16,7 +16,7 @@ import de.inces.nearcon.event.CreateEventActivity;
 import de.inces.nearcon.R;
 import de.inces.nearcon.overview.OverviewActivity;
 
-public class EventMapActivity extends AppCompatActivity implements EventPageFragment.OnFragmentInteractionListener{
+public class EventMapActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,35 +47,10 @@ public class EventMapActivity extends AppCompatActivity implements EventPageFrag
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
     public void openCreateEventActivity(){
         Intent intent = new Intent(this, CreateEventActivity.class);
         startActivity(intent);
     }
 
-    public void showPopup(View anchorView) {
 
-        View popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
-
-        PopupWindow popupWindow = new PopupWindow(popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);;
-
-        // If the PopupWindow should be focusable
-        popupWindow.setFocusable(true);
-
-        // If you need the PopupWindow to dismiss when when touched outside
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
-
-        int location[] = new int[2];
-
-        // Get the View's(the one that was clicked in the Fragment) location
-        anchorView.getLocationOnScreen(location);
-
-        // Using location, the PopupWindow will be displayed right under anchorView
-        popupWindow.showAsDropDown(anchorView);
-    }
 }
