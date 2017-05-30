@@ -40,8 +40,8 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
     }
     
     public void updateMap(){
-            LatLng position = new LatLng(50.775346, 6.083887);
-            map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_add_white_24dp)).position(position));
-            map.moveCamera(CameraUpdateFactory.newLatLng(position));
-        }
+        LatLng position = new LatLng(50.775346, 6.083887);
+        map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_add_white_24dp)).position(position));
+        map.moveCamera(CameraUpdateFactory.newLatLng(position));
+    }
 }

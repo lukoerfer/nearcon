@@ -16,7 +16,7 @@ import de.inces.nearcon.event.CreateEventActivity;
 import de.inces.nearcon.R;
 import de.inces.nearcon.overview.OverviewActivity;
 
-public class EventMapActivity extends AppCompatActivity implements EventPageFragment.OnFragmentInteractionListener{
+public class EventMapActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +45,6 @@ public class EventMapActivity extends AppCompatActivity implements EventPageFrag
         Intent intent = new Intent(this, OverviewActivity.class);
         startActivity(intent);
         return true;
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
     public void openCreateEventActivity(){
