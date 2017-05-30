@@ -1,6 +1,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,17 @@
             android:id="@+id/frag_map"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="0dp" />
+            android:layout_height="0dp" >
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_newEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_white_24dp"
+            app:elevation="4dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right|top"/>
+    </fragment>
     <fragment android:name="de.inces.nearcon.EventPageFragment"
         android:id="@+id/frag_eventPage"
         android:layout_width="match_parent"
