@@ -26,7 +26,7 @@
             android:choiceMode="singleChoice"
             android:columnWidth="35dp"
             android:numColumns="auto_fit"
-            android:listSelector="@android:color/secondary_text_light"
+            android:listSelector="@android:color/holo_purple"
             android:verticalSpacing="2dp"
             android:horizontalSpacing="2dp" />
 

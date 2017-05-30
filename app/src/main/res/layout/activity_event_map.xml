@@ -17,7 +17,7 @@
             android:id="@+id/fab_newEvent"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/ic_add_white_24dp" >
+            android:src="@mipmap/ic_add_white_24dp"
             app:elevation="4dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
