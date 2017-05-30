@@ -9,23 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.inces.nearcon.R;
-import de.inces.nearcon.events.Event;
+import de.inces.nearcon.conversations.Conversation;
 
-public class EventAdapter extends ArrayAdapter<Event> {
+public class ConversationAdapter extends ArrayAdapter<Conversation> {
 
-    public EventAdapter(Context context) {
+    public ConversationAdapter(Context context) {
         super(context, 0);
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        Event event = this.getItem(position);
+        Conversation conversation = this.getItem(position);
         if (view == null) {
-            view = LayoutInflater.from(this.getContext()).inflate(R.layout.item_event, parent, false);
+            view = LayoutInflater.from(this.getContext()).inflate(R.layout.item_conversation, parent, false);
         }
         ImageView imgIcon = (ImageView) view.findViewById(R.id.img_icon);
-        TextView txtDescription = (TextView) view.findViewById(R.id.txt_description);
-        txtDescription.setText("Event Description");
+        TextView txtPreview = (TextView) view.findViewById(R.id.txt_preview);
+        txtPreview.setText("Conversation Preview");
         return view;
     }
 }
