@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import de.inces.nearby.conversations.Message;
+import de.inces.nearcon.conversations.Message;
 import de.inces.nearcon.R;
 
 public class ConversationActivity extends AppCompatActivity {

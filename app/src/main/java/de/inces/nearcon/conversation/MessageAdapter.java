@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import de.inces.nearby.conversations.Message;
+import de.inces.nearcon.conversations.Message;
 import de.inces.nearcon.R;
 
 public class MessageAdapter extends ArrayAdapter<Message> {
