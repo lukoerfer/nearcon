@@ -6,7 +6,7 @@ public class EventCategory {
     private String Name;
 
     public String getName() {
-        return Name;
+        return this.Name;
     }
 
 }
