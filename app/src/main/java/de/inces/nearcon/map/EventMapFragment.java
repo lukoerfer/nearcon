@@ -116,14 +116,14 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
 
     public void addEventMarker(Event event){
         LatLng position = new LatLng(event.getLocation().getLatitude(), event.getLocation().getLongitude());
-        Marker marker = map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_add_white_24dp)).position(position).snippet(event.getDescription));
+        Marker marker = map.addMarker(new MarkerOptions().icon(getIconFromName(event.getIcon().getId())).position(position).snippet(event.getDescription()));
         markerEventDictionary.put(marker,event);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(position,13.0f));
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this.getActivity(), markerEventDictionary.get(marker).getDescription,
+        Toast.makeText(this.getActivity(), markerEventDictionary.get(marker).getDescription(),
                 Toast.LENGTH_SHORT).show();
     }
 }
