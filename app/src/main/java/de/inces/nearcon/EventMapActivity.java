@@ -1,5 +1,6 @@
 package de.inces.nearcon;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
@@ -33,8 +34,7 @@ public class EventMapActivity extends AppCompatActivity implements EventPageFrag
         newEventButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-
-                showPopup(v);
+                openCreateEventActivity();
             }
         });;
     }
@@ -42,6 +42,11 @@ public class EventMapActivity extends AppCompatActivity implements EventPageFrag
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    public void openCreateEventActivity(){
+        Intent intent = new Intent(this, CreateEventActivity.class);
+        startActivity(intent);
     }
 
     public void showPopup(View anchorView) {
