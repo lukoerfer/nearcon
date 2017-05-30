@@ -2,6 +2,7 @@ package de.inces.nearcon.overview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ListView;
 
 import de.inces.nearcon.R;
@@ -26,6 +27,12 @@ public class OverviewActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             this.Events.add(new Event());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.menu_overview_action, menu);
+        return true;
     }
 
     private void initializeEventAdapter() {
