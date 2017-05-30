@@ -1,0 +1,18 @@
+package de.inces.nearcon.util;
+
+import android.content.Context;
+
+public class DynamicResources {
+
+    private Context context;
+
+    public DynamicResources(Context context) {
+        this.context = context;
+    }
+
+    public int findDrawableByName(String name) {
+        name = "@drawable/" + name;
+        return this.context.getResources().getIdentifier(name, null, context.getPackageName());
+    }
+
+}
