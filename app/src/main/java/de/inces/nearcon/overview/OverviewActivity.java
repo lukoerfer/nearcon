@@ -29,12 +29,6 @@ public class OverviewActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.menu_overview_action, menu);
-        return true;
-    }
-
     private void initializeEventAdapter() {
         this.Events = new EventAdapter(this);
         ((ListView) this.findViewById(R.id.list_events)).setAdapter(this.Events);

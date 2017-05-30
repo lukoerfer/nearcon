@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <fragment android:name="de.inces.nearcon.EventMapFragment"
+    <fragment android:name="de.inces.nearcon.map.EventMapFragment"
             android:id="@+id/frag_map"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -21,7 +21,7 @@
             android:layout_marginRight="20dp"
             android:layout_gravity="right|top"/>
     </fragment>
-    <fragment android:name="de.inces.nearcon.EventPageFragment"
+    <fragment android:name="de.inces.nearcon.map.EventPageFragment"
         android:id="@+id/frag_eventPage"
         android:layout_width="match_parent"
         android:layout_height="100dp" />
