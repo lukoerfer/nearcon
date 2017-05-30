@@ -1,4 +1,4 @@
-package de.inces.nearby.events;
+package de.inces.nearcon.events;
 
 public class EventCategory {
 

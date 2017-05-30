@@ -1,4 +1,4 @@
-package de.inces.nearby.users;
+package de.inces.nearcon.users;
 
 public class User {
 

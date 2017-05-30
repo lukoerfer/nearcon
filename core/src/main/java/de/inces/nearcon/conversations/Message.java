@@ -1,8 +1,8 @@
-package de.inces.nearby.conversations;
+package de.inces.nearcon.conversations;
 
 import java.util.Calendar;
 
-import de.inces.nearby.users.User;
+import de.inces.nearcon.users.User;
 
 public class Message {
 
