@@ -1,6 +1,11 @@
 package de.inces.nearcon.event;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +23,15 @@ import android.widget.Toast;
 import de.inces.nearcon.R;
 import de.inces.nearcon.data.EventCategoryProvider;
 import de.inces.nearcon.data.EventIconProvider;
+import de.inces.nearcon.events.Event;
 import de.inces.nearcon.events.EventCategory;
 import de.inces.nearcon.events.EventIcon;
+import de.inces.nearcon.map.EventMapActivity;
+import de.inces.nearcon.service.DataService;
 
 public class CreateEventActivity extends AppCompatActivity {
+
+    private DataService.CreateEventBinder service;
 
     private EventCategoryProvider categoryProvider;
     private EventIconProvider iconProvider;
@@ -40,7 +50,33 @@ public class CreateEventActivity extends AppCompatActivity {
         this.initializeCategories();
         this.initializeActiveTime();
         this.initializeVisibilityRadius();
+        this.initializeSubmit();
+        // Connect service
+        this.connectService();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unbindService(this.serviceConnection);
+    }
+
+    private void connectService() {
+        Intent serviceIntent = new Intent(this, DataService.class)
+            .setAction(DataService.CREATE_EVENT_SERVICE);
+        this.bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            CreateEventActivity.this.service = (DataService.CreateEventBinder) service;
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            CreateEventActivity.this.service = null;
+        }
+    };
 
     private void initializeIcons() {
         icons = new IconAdapter(this);
@@ -60,6 +96,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 EventCategory category = categories.getItem(position);
                 icons.clear();
                 icons.addAll(iconProvider.getIconsByCategory(category.getId()));
+                ((GridView) findViewById(R.id.grid_icons)).setSelection(0);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -105,6 +142,17 @@ public class CreateEventActivity extends AppCompatActivity {
             public void onStartTrackingTouch(SeekBar seekBar) { }
         });
         seekVisibilityRadius.setProgress(4);
+    }
+
+    private void initializeSubmit() {
+        Button btnSubmit = (Button) findViewById(R.id.btn_submit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                service.createEvent(new Event());
+                CreateEventActivity.this.onBackPressed();
+            }
+        });
     }
 
 }

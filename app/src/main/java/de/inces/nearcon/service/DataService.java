@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.provider.ContactsContract;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class DataService extends Service {
         }
 
         public void createEvent(Event event) {
-
+            Toast.makeText(DataService.this, "Successfully created event!", Toast.LENGTH_SHORT).show();
         }
 
     }
