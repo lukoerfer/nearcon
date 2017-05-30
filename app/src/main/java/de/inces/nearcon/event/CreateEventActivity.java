@@ -1,4 +1,4 @@
-package de.inces.nearcon;
+package de.inces.nearcon.event;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.inces.nearcon.R;
+
 public class CreateEventActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     protected Spinner spinnerCategory;
@@ -30,8 +32,6 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     protected TextView txtVisibilityRadius;
 
     protected int iCategoryID;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

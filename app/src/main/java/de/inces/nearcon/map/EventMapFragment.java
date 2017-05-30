@@ -1,4 +1,4 @@
-package de.inces.nearcon;
+package de.inces.nearcon.map;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
+import de.inces.nearcon.R;
 import de.inces.nearcon.events.Event;
 
 public class EventMapFragment extends SupportMapFragment implements OnMapReadyCallback {
