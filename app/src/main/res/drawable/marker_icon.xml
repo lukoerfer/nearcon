@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:gravity="center" android:bottom="17dp" android:id="@+id/drawable_icon" android:height="36dp" android:width="36dp" android:drawable="@mipmap/icon_swimming"></item>
+    <item android:gravity="center" android:bottom="17dp" android:id="@+id/drawable_icon" android:height="37dp" android:width="37dp" android:drawable="@drawable/icon_swimming"></item>
     <item android:height="70dp" android:width="70dp" android:drawable="@mipmap/marker_black_48dp"></item>
 </layer-list>
