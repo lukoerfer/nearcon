@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="de.inces.nearcon.MainActivity"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:focusableInTouchMode="true">
+
+
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+
+        <ListView
+            android:id="@+id/list_icon"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp" />
+
+        <EditText
+            android:id="@+id/edit_description"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="top"
+            android:hint="Please insert an event description"
+            android:maxLength="120"
+            android:minLines="4"
+            android:maxLines="4"
+            android:layout_marginTop="15dp"
+            />
+
+        <SeekBar
+            android:layout_marginTop="15dp"
+            android:id="@+id/seek_visibilityTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="11"/>
+
+        <TextView
+            android:id="@+id/txt_visibilityTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
+
+        <SeekBar
+            android:id="@+id/seek_visibilityRadius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:max="6" />
+
+        <TextView
+            android:id="@+id/txt_visibilityRadius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+            <RadioButton
+                android:id="@+id/btn_selectedLocation"
+                android:layout_width= "0.0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text = "Selected Location"/>
+            <RadioButton
+                android:id="@+id/btn_yourLocation"
+                android:layout_width= "0.0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text = "Your Location"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="SUBMIT EVENT"
+            android:layout_marginTop="15dp"/>
+
+    </LinearLayout>
+</ScrollView>
