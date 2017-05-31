@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import de.inces.nearcon.R;
+import de.inces.nearcon.conversation.ConversationActivity;
 import de.inces.nearcon.conversations.Conversation;
 import de.inces.nearcon.events.Event;
 import de.inces.nearcon.service.DataService;
@@ -55,8 +56,8 @@ public class OverviewActivity extends AppCompatActivity {
         listEvents.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            Event event = events.getItem(position);
-            return true;
+                Event event = events.getItem(position);
+                return true;
             }
         });
     }
@@ -69,7 +70,9 @@ public class OverviewActivity extends AppCompatActivity {
         listConversations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Conversation conversation = conversations.getItem(position);
+                Conversation conversation = conversations.getItem(position);
+                Intent conversationIntent = new Intent(OverviewActivity.this, ConversationActivity.class);
+                OverviewActivity.this.startActivity(conversationIntent);
             }
         });
     }

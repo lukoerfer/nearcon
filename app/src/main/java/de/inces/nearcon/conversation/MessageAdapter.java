@@ -11,11 +11,15 @@ import android.widget.TextView;
 
 import de.inces.nearcon.conversations.Message;
 import de.inces.nearcon.R;
+import de.inces.nearcon.users.User;
 
 public class MessageAdapter extends ArrayAdapter<Message> {
 
-    public MessageAdapter(Context context) {
+    private User user;
+
+    public MessageAdapter(Context context, User user) {
         super(context, 0);
+        this.user = user;
     }
 
     @Override
@@ -27,13 +31,14 @@ public class MessageAdapter extends ArrayAdapter<Message> {
         TextView txtContent = (TextView) view.findViewById(R.id.txt_content);
         txtContent.setText(message.getContent());
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) txtContent.getLayoutParams();
-        //TODO User = ich oder wer anders
-        if(false) {
+        if (message.getSender().getId().equals(this.user.getId())) {
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.rightMargin = 15;
             params.leftMargin = 80;
             txtContent.setBackgroundResource(R.drawable.item_message_background_sent);
-        }else {
+        } else {
             params.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.leftMargin = 15;
             params.rightMargin = 80;
             txtContent.setBackgroundResource(R.drawable.item_message_background_received);
         }
