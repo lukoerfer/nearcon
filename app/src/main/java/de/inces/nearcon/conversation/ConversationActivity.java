@@ -1,6 +1,11 @@
 package de.inces.nearcon.conversation;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,64 +18,88 @@ import android.widget.Toast;
 
 import de.inces.nearcon.conversations.Message;
 import de.inces.nearcon.R;
+import de.inces.nearcon.service.DataService;
+import de.inces.nearcon.users.User;
 
 public class ConversationActivity extends AppCompatActivity {
 
-    private MessageAdapter Messages;
-    protected Button btnSend;
-    protected EditText editMessage;
+    private DataService.ConversationBinder service;
+    private MessageAdapter messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
-        this.initializeMessageAdapter();
+        this.initializeMessages();
+        this.initializeSendUnit();
+        this.connectService();
+    }
 
-        this.editMessage = (EditText) findViewById(R.id.edit_message);
-        this.editMessage.addTextChangedListener(new TextWatcher() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.update();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unbindService(serviceConnection);
+    }
+
+    private void initializeMessages() {
+        this.messages = new MessageAdapter(this, new User("test1"));
+        ((ListView) this.findViewById(R.id.list_messages)).setAdapter(this.messages);
+    }
+
+    private void initializeSendUnit() {
+        final EditText editMessage = (EditText) findViewById(R.id.edit_message);
+        final Button btnSend = (Button) findViewById(R.id.btn_send);
+        editMessage.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 btnSend.setEnabled(s.length() > 0);
             }
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void afterTextChanged(Editable s) { }
         });
-
-        this.initSendButton();
-    }
-
-    private void initializeMessageAdapter() {
-        this.Messages = new MessageAdapter(this);
-        ((ListView) this.findViewById(R.id.list_messages)).setAdapter(this.Messages);
-    }
-
-
-    private void initSendButton(){
-        this.btnSend = (Button) findViewById(R.id.btn_send);
-
-        this.btnSend.setOnClickListener(new View.OnClickListener() {
-
+        btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // What to do when submitting
-                // Or show warning if you have to do something more
-
-                //first get descriptiontext
-
                 String message = editMessage.getText().toString();
-                if(!message.isEmpty()) {
-                    //TODO make an if condition for "no test added"
-                    Messages.add(new Message(message));
-                    editMessage.setText("");
-                }
-
-
-
+                messages.add(new Message(new User("test1"), message));
+                editMessage.setText("");
             }
         });
+    }
+
+    private void connectService() {
+        Intent serviceIntent = new Intent(this, DataService.class)
+            .setAction(DataService.CONVERSATION_SERVICE);
+        this.bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            ConversationActivity.this.service = (DataService.ConversationBinder) service;
+            ConversationActivity.this.update();
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            ConversationActivity.this.service = null;
+        }
+    };
+
+    private void update() {
+        if (service != null) {
+            this.messages.clear();
+            this.messages.addAll(service.getMessages(null));
+        } else {
+            this.connectService();
+        }
     }
 
 }

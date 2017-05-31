@@ -77,7 +77,9 @@ public class DataService extends Service {
         }
 
         public List<Conversation> getActiveConversations() {
-            return new ArrayList<Conversation>();
+            List<Conversation> conversations = new ArrayList<Conversation>();
+            conversations.add(new Conversation());
+            return conversations;
         }
     }
 
@@ -85,9 +87,13 @@ public class DataService extends Service {
 
         List<Message> messages = new ArrayList<Message>();
 
+        public User getUser() {
+            return DataService.this.currentUser;
+        }
+
         public ConversationBinder() {
-            messages.add(new Message("Test"));
-            messages.add(new Message("Message"));
+            messages.add(new Message(new User("test1"), "Test"));
+            messages.add(new Message(new User("test2"), "Message"));
         }
 
         public List<Message> getMessages(Conversation conversation) {

@@ -99,6 +99,7 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
     }
     
     public void updateMap(List<Event> eventList){
+        map.clear();
         for (Event event : eventList) {
             addEventMarker(event);
         }
