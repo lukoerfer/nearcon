@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -124,6 +126,13 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
     public void addEventMarker(Event event){
         LatLng position = new LatLng(event.getLocation().getLatitude(), event.getLocation().getLongitude());
         Marker marker = map.addMarker(new MarkerOptions().icon(getIconFromName(event.getIcon().getId())).position(position).snippet(event.getDescription()));
+        if (event.getLocation().getRadius() > 0){
+            map.addCircle(new CircleOptions()
+                    .center(position)
+                    .radius(event.getLocation().getRadius())
+                    .strokeColor(0x00ffffff)
+                    .fillColor(0x33333333));
+        }
         markerEventDictionary.put(marker,event);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(position,13.0f));
     }
