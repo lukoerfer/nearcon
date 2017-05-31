@@ -149,7 +149,7 @@ public class CreateEventActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                service.createEvent(new Event());
+                service.createEvent(null);
                 CreateEventActivity.this.onBackPressed();
             }
         });

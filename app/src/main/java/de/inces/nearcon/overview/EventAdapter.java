@@ -30,8 +30,8 @@ public class EventAdapter extends ArrayAdapter<Event> {
         }
         ImageView imgIcon = (ImageView) view.findViewById(R.id.img_icon);
         TextView txtDescription = (TextView) view.findViewById(R.id.txt_description);
-        txtDescription.setText("Event Description");
-        imgIcon.setImageResource(this.dynamicResources.findDrawableByName("soccer"));
+        txtDescription.setText(event.getDescription());
+        imgIcon.setImageResource(this.dynamicResources.findDrawableByName(event.getIcon().getId()));
         return view;
     }
 
