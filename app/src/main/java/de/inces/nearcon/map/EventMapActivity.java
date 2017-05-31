@@ -27,13 +27,15 @@ import de.inces.nearcon.service.DataService;
 public class EventMapActivity extends AppCompatActivity {
 
     private DataService.MapBinder service;
+    private EventMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        connectService();
         setContentView(R.layout.activity_event_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        EventMapFragment mapFragment = (EventMapFragment) getSupportFragmentManager()
+        mapFragment = (EventMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.frag_map);
         FloatingActionButton newEventButton = (FloatingActionButton) findViewById(R.id.fab_newEvent);
         newEventButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +86,7 @@ public class EventMapActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             EventMapActivity.this.service = (DataService.MapBinder) service;
-            EventMapActivity.this.update();
+            update();
         }
         @Override
         public void onServiceDisconnected(ComponentName name) {
@@ -92,9 +94,10 @@ public class EventMapActivity extends AppCompatActivity {
         }
     };
 
-    private void update() {
+    public void update() {
         if (service != null) {
             List<Event> events = service.searchEvents();
+            mapFragment.updateMap(events);
         } else {
             this.connectService();
         }
