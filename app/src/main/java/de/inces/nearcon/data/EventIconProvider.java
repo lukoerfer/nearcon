@@ -2,6 +2,7 @@ package de.inces.nearcon.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import de.inces.nearcon.events.EventCategory;
 import de.inces.nearcon.events.EventIcon;
@@ -42,6 +43,11 @@ public class EventIconProvider {
             }
         }
         return filtered;
+    }
+
+    public EventIcon getRandomIcon() {
+        Random r = new Random();
+        return icons.get(r.nextInt(icons.size()));
     }
 
 }
