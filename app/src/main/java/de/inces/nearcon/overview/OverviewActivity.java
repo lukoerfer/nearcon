@@ -55,8 +55,8 @@ public class OverviewActivity extends AppCompatActivity {
         listEvents.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Event event = events.getItem(position);
-                return true;
+            Event event = events.getItem(position);
+            return true;
             }
         });
     }
@@ -69,7 +69,7 @@ public class OverviewActivity extends AppCompatActivity {
         listConversations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Conversation conversation = conversations.getItem(position);
+            Conversation conversation = conversations.getItem(position);
             }
         });
     }
