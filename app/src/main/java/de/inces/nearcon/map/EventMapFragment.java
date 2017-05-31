@@ -2,6 +2,7 @@ package de.inces.nearcon.map;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -40,15 +41,19 @@ import java.util.Map;
 import java.util.Set;
 
 import de.inces.nearcon.R;
+import de.inces.nearcon.conversation.ConversationActivity;
+import de.inces.nearcon.event.CreateEventActivity;
 import de.inces.nearcon.events.Event;
 import de.inces.nearcon.events.EventIcon;
 import de.inces.nearcon.events.EventLocation;
 import de.inces.nearcon.util.DynamicResources;
 
+
+
 public class EventMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private DynamicResources dynRes;
-    GoogleMap map;
+    private GoogleMap map;
     Map<Marker,Event> markerEventDictionary;
 
     class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
@@ -91,11 +96,12 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
         map = googleMap;
         map.setInfoWindowAdapter(new CustomInfoWindowAdapter());
         map.setOnInfoWindowClickListener(this);
-        updateMap();
     }
     
-    public void updateMap(){
-        //addEventMarker(eve);
+    public void updateMap(List<Event> eventList){
+        for (Event event : eventList) {
+            addEventMarker(event);
+        }
     }
 
     private BitmapDescriptor bitmapFromDrawable(Drawable drawable) {
@@ -123,7 +129,9 @@ public class EventMapFragment extends SupportMapFragment implements OnMapReadyCa
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this.getActivity(), markerEventDictionary.get(marker).getDescription(),
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this.getActivity(), markerEventDictionary.get(marker).getDescription(),
+         //       Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), ConversationActivity.class);
+        startActivity(intent);
     }
 }
