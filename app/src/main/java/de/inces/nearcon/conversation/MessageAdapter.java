@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,20 +30,21 @@ public class MessageAdapter extends ArrayAdapter<Message> {
             view = LayoutInflater.from(this.getContext()).inflate(R.layout.item_message, parent, false);
         }
         TextView txtContent = (TextView) view.findViewById(R.id.txt_content);
+        RelativeLayout relLayout = (RelativeLayout) view.findViewById(R.id.lay_content);
         txtContent.setText(message.getContent());
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) txtContent.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) relLayout.getLayoutParams();
         if (message.getSender().getId().equals(this.user.getId())) {
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             params.rightMargin = 15;
             params.leftMargin = 80;
-            txtContent.setBackgroundResource(R.drawable.item_message_background_sent);
+            relLayout.setBackgroundResource(R.drawable.item_message_background_sent);
         } else {
             params.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             params.leftMargin = 15;
             params.rightMargin = 80;
-            txtContent.setBackgroundResource(R.drawable.item_message_background_received);
+            relLayout.setBackgroundResource(R.drawable.item_message_background_received);
         }
-        txtContent.setLayoutParams(params);
+        relLayout.setLayoutParams(params);
         return view;
     }
 }
