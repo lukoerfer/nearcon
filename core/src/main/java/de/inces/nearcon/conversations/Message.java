@@ -12,8 +12,8 @@ public class Message {
 
     private String Content;
 
-
-    public Message (String content){
+    public Message (User sender, String content) {
+        this.Sender = sender;
         this.Content = content;
     }
 

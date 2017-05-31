@@ -15,6 +15,13 @@ public class Event {
     private int Exclusivity;
     private EventVisibility Visibility;
 
+    public Event(User creator, EventIcon icon, String description, EventLocation location) {
+        this.Creator = creator;
+        this.Icon = icon;
+        this.Description = description;
+        this.Location = location;
+    }
+
     public int getId() {
         return this.Id;
     }

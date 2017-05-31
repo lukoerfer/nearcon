@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.provider.ContactsContract;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.inces.nearcon.conversations.Conversation;
 import de.inces.nearcon.conversations.Message;
+import de.inces.nearcon.data.EventIconProvider;
 import de.inces.nearcon.events.Event;
+import de.inces.nearcon.events.EventLocation;
 import de.inces.nearcon.users.User;
 
 public class DataService extends Service {
@@ -22,6 +25,7 @@ public class DataService extends Service {
     public static final String CONVERSATION_SERVICE = "CONVERSATION";
 
     private User currentUser;
+    private EventIconProvider iconProvider = new EventIconProvider();
 
     @Override
     public void onCreate() {
@@ -32,6 +36,10 @@ public class DataService extends Service {
 
         public List<Event> searchEvents() {
             List<Event> events = new ArrayList<Event>();
+            events.add(new Event(DataService.this.currentUser, iconProvider.getRandomIcon(),
+                "Mein Lieblings-Event", new EventLocation(15.567, 32.785, 0.0)));
+            events.add(new Event(DataService.this.currentUser, iconProvider.getRandomIcon(),
+                "Ein anderes Event", new EventLocation(22.093, 9.785, 0.0)));
             return events;
         }
 
@@ -48,7 +56,7 @@ public class DataService extends Service {
         }
 
         public void createEvent(Event event) {
-
+            Toast.makeText(DataService.this, "Successfully created event!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -61,13 +69,17 @@ public class DataService extends Service {
 
         public List<Event> getOwnEvents() {
             List<Event> events = new ArrayList<Event>();
-            events.add(new Event());
-            events.add(new Event());
+            events.add(new Event(getUser(), iconProvider.getRandomIcon(),
+                "Mein Lieblings-Event", new EventLocation(15.567, 32.785, 0.0)));
+            events.add(new Event(getUser(), iconProvider.getRandomIcon(),
+                "Ein anderes Event", new EventLocation(22.093, 9.785, 0.0)));
             return events;
         }
 
         public List<Conversation> getActiveConversations() {
-            return new ArrayList<Conversation>();
+            List<Conversation> conversations = new ArrayList<Conversation>();
+            conversations.add(new Conversation());
+            return conversations;
         }
     }
 
@@ -75,9 +87,13 @@ public class DataService extends Service {
 
         List<Message> messages = new ArrayList<Message>();
 
+        public User getUser() {
+            return DataService.this.currentUser;
+        }
+
         public ConversationBinder() {
-            messages.add(new Message("Test"));
-            messages.add(new Message("Message"));
+            messages.add(new Message(new User("test1"), "Test"));
+            messages.add(new Message(new User("test2"), "Message"));
         }
 
         public List<Message> getMessages(Conversation conversation) {
