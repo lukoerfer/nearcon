@@ -22,13 +22,21 @@
         <GridView
             android:id="@+id/grid_icons"
             android:layout_width="fill_parent"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:choiceMode="singleChoice"
-            android:columnWidth="35dp"
+            android:columnWidth="32dp"
             android:numColumns="auto_fit"
             android:listSelector="@android:color/holo_purple"
-            android:verticalSpacing="2dp"
-            android:horizontalSpacing="2dp" />
+            android:verticalSpacing="4dp"
+            android:horizontalSpacing="4dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorAccent" />
 
         <EditText
             android:id="@+id/edit_description"
@@ -39,7 +47,7 @@
             android:maxLength="120"
             android:minLines="4"
             android:maxLines="4"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             />
 
         <SeekBar
@@ -97,6 +105,7 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
             android:text="Create Event"
             android:layout_marginTop="15dp"/>
 
