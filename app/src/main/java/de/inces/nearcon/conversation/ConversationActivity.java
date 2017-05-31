@@ -140,7 +140,7 @@ public class ConversationActivity extends AppCompatActivity {
             qrScanIntent.putExtra("SCAN_WIDTH", 800);
             qrScanIntent.putExtra("SCAN_HEIGHT", 800);
             qrScanIntent.putExtra("RESULT_DISPLAY_DURATION_MS", 200L);
-            qrScanIntent.putExtra("PROMPT_MESSAGE", "Scan a CDJ QR Code");
+            qrScanIntent.putExtra("PROMPT_MESSAGE", "Scan QR Code");
             this.startActivityForResult(qrScanIntent, 0);
         } catch (Exception ex) {
             startZXingDownloadDialog();
