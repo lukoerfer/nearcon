@@ -7,10 +7,14 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -21,6 +25,17 @@ import de.inces.nearcon.app.data.EventCategoryProvider;
 import de.inces.nearcon.app.data.EventIconProvider;
 import de.inces.nearcon.core.model.events.EventCategory;
 import de.inces.nearcon.app.service.DataService;
+import de.inces.nearcon.data.EventCategoryProvider;
+import de.inces.nearcon.data.EventIconProvider;
+import de.inces.nearcon.events.Event;
+import de.inces.nearcon.events.EventCategory;
+import de.inces.nearcon.events.EventIcon;
+import de.inces.nearcon.events.EventLocation;
+import de.inces.nearcon.map.EventMapActivity;
+import de.inces.nearcon.service.DataService;
+import de.inces.nearcon.users.User;
+
+import static java.lang.Boolean.TRUE;
 
 public class CreateEventActivity extends AppCompatActivity {
 
@@ -75,7 +90,18 @@ public class CreateEventActivity extends AppCompatActivity {
         icons = new IconAdapter(this);
         GridView gridIcons = (GridView) findViewById(R.id.grid_icons);
         gridIcons.setAdapter(icons);
-    }
+        gridIcons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                parent.setSelection(position);
+                selectedIconID = position;
+            }
+
+        });
+    };
+
+    private int selectedIconID;
 
     private void initializeCategories() {
         categories = new ArrayAdapter<EventCategory>(this,
@@ -138,11 +164,24 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     private void initializeSubmit() {
-        Button btnSubmit = (Button) findViewById(R.id.btn_submit);
+        final Button btnSubmit = (Button) findViewById(R.id.btn_submit);
+        final GridView gridIcons = (GridView) findViewById(R.id.grid_icons);
+        final TextView editDescription = (EditText) findViewById(R.id.edit_description);
+        editDescription.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btnSubmit.setEnabled(s.length() > 0);
+            }
+            @Override
+            public void afterTextChanged(Editable s) { }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+        });
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                service.createEvent(null);
+                service.createEvent(new Event(new User("user1"), icons.getItem(selectedIconID),
+                    editDescription.getText().toString(), new EventLocation(50.768259, 6.090921, 0.0)));
                 CreateEventActivity.this.onBackPressed();
             }
         });

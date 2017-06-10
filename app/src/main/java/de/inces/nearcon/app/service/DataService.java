@@ -34,9 +34,11 @@ public class DataService extends Service {
         mapEvents.add(new Event(new User("random1"), new EventIcon(0, "soccer"),
             "Wer möchte um 16:30 Uhr ein wenig im Soccer-Cage kicken?", new EventLocation(50.778598, 6.070815, 0.0)));
         mapEvents.add(new Event(new User("random2"), new EventIcon(0, "running"),
-            "Joggen im Westpark - wer schließt sich an?", new EventLocation(50.771751, 6.068273, 1.0)));
+            "Joggen im Westpark - wer schließt sich an?", new EventLocation(50.771751, 6.068273, 80.0)));
         mapEvents.add(new Event(new User("random3"), new EventIcon(0, "bike"),
             "Fahrradtour nach Vaals mit Start am Audimax", new EventLocation(50.780294, 6.076051, 0.0)));
+        mapEvents.add(new Event(new User("schmachti"), new EventIcon(0, "partyhat"),
+            "Hausparty bei mir, euer Ernst", new EventLocation(50.777677, 6.077918, 0.0)));
         Event movieEvent = new Event(new User("user1"), new EventIcon(0, "movie"),
             "Wer kommt mit zur Premiere des neues Fluch der Karibik?", new EventLocation(50.771775, 6.086595, 0.0));
         mapEvents.add(movieEvent);
@@ -67,6 +69,8 @@ public class DataService extends Service {
         }
 
         public void createEvent(Event event) {
+            mapEvents.add(event);
+            ownEvents.add(event);
             Toast.makeText(DataService.this, "Successfully created event!", Toast.LENGTH_SHORT).show();
         }
 
