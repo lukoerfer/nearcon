@@ -12,7 +12,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".map.EventMapActivity"
+        <activity android:name=".app.map.EventMapActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,19 +20,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".event.CreateEventActivity"
+        <activity android:name=".app.event.CreateEventActivity"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".overview.OverviewActivity"
+        <activity android:name=".app.overview.OverviewActivity"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".conversation.ConversationActivity"
+        <activity android:name=".app.conversation.ConversationActivity"
             android:screenOrientation="portrait">
         </activity>
 
-        <service android:name=".service.DataService">
+        <service android:name=".app.service.DataService">
 
         </service>
 

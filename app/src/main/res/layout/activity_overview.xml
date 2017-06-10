@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="2"
-    tools:context="de.inces.nearcon.overview.OverviewActivity">
+    tools:context=".app.overview.OverviewActivity">
 
     <TextView
         android:layout_width="match_parent"
