@@ -1,7 +1,6 @@
 package de.inces.nearcon.core.model.events;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,9 +14,9 @@ public class EventIcon {
     @Id
     @GeneratedValue
     @Getter
-    private long id;
+    private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn
     @Getter
     private EventCategory category;

@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.SeekBar;
@@ -32,10 +31,8 @@ import de.inces.nearcon.events.EventCategory;
 import de.inces.nearcon.events.EventIcon;
 import de.inces.nearcon.events.EventLocation;
 import de.inces.nearcon.map.EventMapActivity;
-import de.inces.nearcon.service.DataService;
+import de.inces.nearcon.backend.DataService;
 import de.inces.nearcon.users.User;
-
-import static java.lang.Boolean.TRUE;
 
 public class CreateEventActivity extends AppCompatActivity {
 

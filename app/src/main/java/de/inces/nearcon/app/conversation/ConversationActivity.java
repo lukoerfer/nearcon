@@ -1,7 +1,6 @@
 package de.inces.nearcon.app.conversation;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,26 +8,23 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.IBinder;
-import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import de.inces.nearcon.core.model.conversations.Message;
 import de.inces.nearcon.R;
 import de.inces.nearcon.core.model.users.User;
 import de.inces.nearcon.overview.OverviewActivity;
-import de.inces.nearcon.service.DataService;
+import de.inces.nearcon.backend.DataService;
 
 public class ConversationActivity extends AppCompatActivity {
 

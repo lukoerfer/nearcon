@@ -1,8 +1,26 @@
 package de.inces.nearcon.core.util;
 
-public class Strings {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-    public static final String EMPTY = "";
+@AllArgsConstructor
+public enum Strings {
 
+    Empty(""),
+    Space(" "),
+    Colon(":")
 
+    ;
+
+    @Getter
+    private String value;
+
+    public String $() {
+        return this.value;
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
 }

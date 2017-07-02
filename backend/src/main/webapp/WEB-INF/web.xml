@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" >
+    <display-name>Nearcon</display-name>
+    <!-- Lifecycle listener -->
+    <listener>
+        <listener-name>lifecycle</listener-name>
+        <listener-class>de.inces.nearcon.backend.ServiceLifecycle</listener-class>
+    </listener>
+    <!-- API container -->
+    <servlet>
+        <servlet-name>api</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <!-- Configuration -->
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>de.inces.nearcon.backend.ContainerConfig</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>api</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+</web-app>

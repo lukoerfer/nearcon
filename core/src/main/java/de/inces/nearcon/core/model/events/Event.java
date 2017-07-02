@@ -2,20 +2,22 @@ package de.inces.nearcon.core.model.events;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import de.inces.nearcon.core.model.users.User;
 import lombok.Getter;
 
+@Entity
 public class Event {
 
     @Id
     @GeneratedValue
     @Getter
     private long id;
-
 
     @Getter
     private User creator;
@@ -30,9 +32,10 @@ public class Event {
     private String description;
 
     @Getter
-    private Calendar expireTime;
+    private Calendar expireDate;
 
     @Embedded
+    @Column
     @Getter
     private EventLocation location;
 
