@@ -22,7 +22,7 @@ import android.widget.ListView;
 
 import de.inces.nearcon.core.model.conversations.Message;
 import de.inces.nearcon.R;
-import de.inces.nearcon.core.model.users.User;
+import de.inces.nearcon.core.model.auth.User;
 import de.inces.nearcon.overview.OverviewActivity;
 import de.inces.nearcon.backend.DataService;
 

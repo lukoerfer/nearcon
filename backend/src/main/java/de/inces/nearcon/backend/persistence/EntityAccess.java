@@ -56,9 +56,19 @@ public class EntityAccess implements AutoCloseable, EntityManager, EntityTransac
         this.entityManager.close();
     }
 
+    //region | Helpers |
+
+    public <T> List<T> findAll(Class<T> entityClass) {
+        CriteriaQuery<T> query = this.createCriteriaQuery(entityClass);
+        query.select(query.from(entityClass));
+        return this.createQuery(query).getResultList();
+    }
+
     public <T> CriteriaQuery<T> createCriteriaQuery(Class<T> resultClass) {
         return this.entityManager.getCriteriaBuilder().createQuery(resultClass);
     }
+
+    //endregion
 
     //region | EntityManager |
 

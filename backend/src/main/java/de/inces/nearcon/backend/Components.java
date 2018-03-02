@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.inces.nearcon.backend.persistence.PersistenceManager;
-import de.inces.nearcon.backend.services.users.UserService;
 
 public class Components {
 
@@ -13,8 +12,6 @@ public class Components {
     static {
         // Create persistence manager
         register(new PersistenceManager());
-        // Create services
-        register(new UserService());
     }
 
     public static void register(Object obj) {

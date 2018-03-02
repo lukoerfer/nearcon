@@ -4,10 +4,9 @@ import java.util.Base64;
 
 import javax.ws.rs.core.SecurityContext;
 
-import de.inces.nearcon.backend.model.Credentials;
 import de.inces.nearcon.core.util.Strings;
 
-public class BasicAuthentication {
+public class HttpBasicAuth {
 
     public static Credentials extract(String authHeader) {
         if (authHeader != null) {

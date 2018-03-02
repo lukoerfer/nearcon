@@ -16,7 +16,7 @@ public class PluralNamingStrategy extends PhysicalNamingStrategyStandardImpl {
         String[] words = name.getText().split(CAMEL_CASE_REGEX);
         int last = words.length - 1;
         words[last] = English.plural(words[last]);
-        String pluralName = String.join(Strings.EMPTY, words);
+        String pluralName = String.join(Strings.Empty.$(), words);
         return new Identifier(pluralName, name.isQuoted());
     }
 }

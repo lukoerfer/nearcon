@@ -1,4 +1,4 @@
-package de.inces.nearcon.backend.model;
+package de.inces.nearcon.backend.auth;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import de.inces.nearcon.core.model.events.Event;
-import de.inces.nearcon.core.model.users.User;
+import de.inces.nearcon.core.model.auth.User;
 import lombok.Getter;
 
 @Entity

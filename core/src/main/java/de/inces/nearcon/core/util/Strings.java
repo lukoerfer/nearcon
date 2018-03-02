@@ -8,7 +8,8 @@ public enum Strings {
 
     Empty(""),
     Space(" "),
-    Colon(":")
+    Colon(":"),
+    Comma(",")
 
     ;
 

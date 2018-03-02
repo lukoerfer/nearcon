@@ -14,7 +14,7 @@ import de.inces.nearcon.core.model.conversations.Message;
 import de.inces.nearcon.core.model.events.Event;
 import de.inces.nearcon.core.model.events.EventIcon;
 import de.inces.nearcon.core.model.events.EventLocation;
-import de.inces.nearcon.core.model.users.User;
+import de.inces.nearcon.core.model.auth.User;
 
 public class DataService extends Service {
 

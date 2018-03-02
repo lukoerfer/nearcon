@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import de.inces.nearcon.core.model.conversations.Message;
 import de.inces.nearcon.R;
-import de.inces.nearcon.core.model.users.User;
+import de.inces.nearcon.core.model.auth.User;
 
 public class MessageAdapter extends ArrayAdapter<Message> {
 

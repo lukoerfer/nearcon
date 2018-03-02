@@ -11,7 +11,7 @@ public class ContainerConfig extends ResourceConfig {
         // Register API packages
         this.packages(true, BaseApi.class.getPackage().getName());
         // Register the authentication filter
-        this.register(Authenticator.class);
+        //this.register(Authenticator.class);
     }
 
 }

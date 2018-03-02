@@ -16,11 +16,11 @@ public class PersistenceManager {
         return this.entityManagerFactory.createEntityManager();
     }
 
-    public EntityAccess reading() {
+    public EntityAccess readable() {
         return new EntityAccess(this.getEntityManager());
     }
 
-    public EntityAccess writing() {
+    public EntityAccess writable() {
         return new EntityAccess(this.getEntityManager(), true);
     }
 
